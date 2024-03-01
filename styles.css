@@ -158,6 +158,8 @@ header {
     animation: typing 1.3s steps(10, end),
         blink-caret .75s step-end infinite;
     height: fit-content;
+    opacity: 0;
+    animation-delay: 1.3s;
 }
 
 .typing-animation h2 {
@@ -167,11 +169,13 @@ header {
 
 @keyframes typing {
     from {
-        width: 0
+        width: 0;
+        opacity: 1
     }
 
     to {
-        width: 100%
+        width: 100%;
+        opacity: 1
     }
 }
 

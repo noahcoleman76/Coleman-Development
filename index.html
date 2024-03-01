@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="./images/Coleman Development-logos/Screenshot 2024-02-29 at 10.47.24 PM.png">
 </head>
 
-<body>
+<body onload="setTimeout(displayTyping, 2000)">
     <div class="container">
         <header>
             <a href="./index.html">
@@ -38,7 +38,7 @@
 
         <div class="message">
             <section class="black-section">
-                <div class="typing-animation">
+                <div class="typing-animation" id="typing">
                     <h2>Let's build your new site!</h2>
                 </div>
             </section>
@@ -78,6 +78,12 @@
             </div>
         </footer>
     </div>
+
+    <script>
+        function displayTyping() {
+            document.getElementById("typing").style.opacity = "1";
+        }
+    </script>
 </body>
 
 </html>
