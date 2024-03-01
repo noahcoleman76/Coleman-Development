@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Design Services</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <a href="./index.html">
+                <img src="./images/Coleman Development-logos/imageedit_2_9065459732.png" alt="Logo" class="logo">
+            </a>
+            <nav class="menu">
+                <a href="./about.html">About</a>
+                <a href="./services.html">Services</a>
+                <a href="./portfolio.html">Portfolio</a>
+                <a href="./contact.html">Contact</a>
+            </nav>
+            <a href="./contact.html" class="btn-grad">Get In Touch</a>
+        </header>
+
+        <!-- Add more sections for about, services, portfolio, pricing, etc. -->
+        <div class="services-page-container">
+        <h2 class="services-title">Coleman Development makes it easy to design, build, and launch</h2>
+        <section class="services-section hidden">
+            <div class="service-item">
+                <img src="./images/icons/imageedit_12_5934482432.png">
+                <h3>Custom Website Design</h3>
+                <p>Tailored website designs that reflect the unique identity and branding of each client.</p>
+                <div class="additional-info">
+                    <p>Additional information about Custom Website Design...</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="./images/icons/imageedit_2_6520638141.png">
+                <h3>Responsive Web Development</h3>
+                <p>Websites that are optimized for all devices, ensuring a seamless user experience on desktops, tablets, and smartphones.</p>
+                <div class="additional-info">
+                    <p>Additional information about Responsive Web Development...</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="./images/icons/imageedit_18_6841653369.png">
+                <h3>Content Management Systems (CMS)</h3>
+                <p>Integration of user-friendly CMS platforms like WordPress, Joomla, or Drupal for easy content updates.</p>
+                <div class="additional-info">
+                    <p>Additional information about Content Management Systems (CMS)...</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="./images/icons/imageedit_9_5182618682.png">
+                <h3>Conversion Rate Optimization (CRO)</h3>
+                <p>Implementing strategies to increase the percentage of website visitors who take a desired action, such as making a purchase or filling out a contact form.</p>
+                <div class="additional-info">
+                    <p>Additional information about E-commerce Solutions...</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="./images/icons/imageedit_26_6327288470-removebg-preview.png">
+                <h3>Website Redesign</h3>
+                <p>Revamping outdated or underperforming websites to improve functionality, aesthetics, and user experience.</p>
+                <div class="additional-info">
+                    <p>Additional information about Search Engine Optimization (SEO)...</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="./images/icons/imageedit_15_2476907232.png">
+                <h3>Website Maintenance</h3>
+                <p>Ongoing support and maintenance services to ensure websites remain up-to-date and secure.</p>
+                <div class="additional-info">
+                    <p>Additional information about Website Maintenance...</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="./images/icons/imageedit_7_5151165242.png">
+                <h3>Website Hosting</h3>
+                <p>Assistance with selecting and setting up reliable hosting services for websites.</p>
+                <div class="additional-info">
+                    <p>Additional information about Website Hosting...</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="./images/icons/imageedit_12_6287309143.png">
+                <h3>Graphic Design</h3>
+                <p>Creation of custom graphics, logos, and other visual elements to enhance website aesthetics.</p>
+                <div class="additional-info">
+                    <p>Additional information about Graphic Design...</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="./images/icons/imageedit_21_2357979705-removebg-preview.png">
+                <h3>Website Analytics</h3>
+                <p>Integration of analytics tools to track website performance and user behavior, providing valuable insights for optimization.</p>
+                <div class="additional-info">
+                    <p>Additional information about Website Analytics...</p>
+                </div>
+            </div>
+        </section>
+        </div>
+
+        <h2 class="delivering">Delivering unparalleled quality of service, we ensure every client's needs are met with precision and care.</h2>
+        
+
+        <section class="contact-section">
+            <h2>Grow your online business further</h2>
+            <a href="./contact.html" class="a">Get In Touch</a>
+        </section>
+        <footer class="footer">
+            <a href="./index.html">
+                <img src="./images/Coleman Development-logos/imageedit_16_7516701808.png" alt="Logo" class="logo">
+            </a>
+            <div class="contact-info">
+                <h1>Contact Us</h1>
+                <p>Email: colemandevelopmentutah@gmail.com</p>
+                <p>Phone: (805) 550-7008</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        window.addEventListener('scroll', reveal);
+
+        function reveal() {
+            let hiddens = document.querySelectorAll('.hidden');
+
+            hiddens.forEach(hidden => {
+                let hiddenTop = hidden.getBoundingClientRect().top;
+                let windowHeight = window.innerHeight;
+
+                if (hiddenTop < windowHeight) {
+                    hidden.classList.add('visible');
+                } else {
+                    hidden.classList.remove('visible');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
