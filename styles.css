@@ -40,7 +40,25 @@ header {
     color: #333;
     font-size: 1.2em;
     font-weight: bold;
+    position: relative;
 }
+.menu a:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 3px;
+    bottom: -5px;
+    left: 0;
+    background-color: darkgray;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .menu a:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
 
 .menu a:hover {
     color: rgb(62, 207, 255);
@@ -487,30 +505,132 @@ header {
 
 
 /* Portfolio Page */
-.coming-soon-section {
-    background-color: #f4f4f4;
-    padding: 40px;
+.portfolio-section{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    background-color: lightgray;
+    padding: 50px 0px;
+}
+.portfolio-item {
+    background-color: white;
+    display: inline-block;
+    margin: 20px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    margin-top: 40px;
+    width: 40vw;
+    height: 400px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.portfolio-item img {
+    transition: transform 0.3s ease-in-out;
+    width: 100%;
+    object-fit: contain;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.1)
+}
+
+.portfolio-item .info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.info h3{
+    margin: 0px;
+    padding: 0px 10px;
+    font-size: 3vw;
     text-align: center;
+    text-wrap: nowrap;
 }
 
-.coming-soon-content {
-    max-width: 800px;
-    margin: 0 auto;
+.portfolio-item:hover .info {
+    transform: translateY(0);
+    height: 100%;
 }
-
-.coming-soon-content h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
+.link-icon{
+    max-width: 20px;
+    margin-left: 10px;
 }
-
-.coming-soon-content p {
-    font-size: 1.2em;
-    line-height: 1.6;
+.visit{
+    display: flex;
+    margin-top: 25px;
+    align-items: center;
+    font-size: 2vw;
+    transition: .7s ease;
 }
-
+.visit:hover{
+    transform: scale(.9);
+}
+.hover-underline-animation {
+    position: relative;
+  }
+  
+  .hover-underline-animation:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 5px;
+    bottom: -5px;
+    left: 0;
+    background-color: #3ecfff;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .hover-underline-animation:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+.portfolio-title{
+    width: 100%;
+    background-color: #3ecfff;
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.linear-wipe {
+    text-align: center;
+    font-size: 45px;
+    letter-spacing: 3px;
+    background: linear-gradient(to right, white 20%, #006586 40%, #3ecfff 60%, white 80%);
+    background-size: 200% auto;
+    color: #000;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    animation: shine 2s linear infinite;
+  }
+  @keyframes shine {
+    to {
+      background-position: 200% center;
+    }
+  }
+.comingsoon{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.comingsoon h4{
+    font-size: 45px;
+}
 
 
 /* Contact Page */
@@ -616,6 +736,18 @@ header {
     .service-item{
         width: 40vw;
     }
+    .visit {
+        font-size: 2vw;
+    }
+    .info h3{
+        font-size: 2.5vw;
+    }
+    .linear-wipe{
+        font-size: 35px;
+    }
+    .portfolio-item{
+        width: 45vw;
+    }
 }
 @media screen and (max-width: 800px) {
     .section{
@@ -659,10 +791,24 @@ header {
     .black-section h2{
         font-size: 1.5em;
     }
+    .comingsoon h4{
+        font-size: 35px;
+    }
 }
 @media screen and (max-width: 700px) {
     .service-item{
         width: 90vw;
+    }
+    .portfolio-section{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .portfolio-item{
+        width: 75vw;
+    }
+    .info h3{
+        font-size: 5vw;
     }
 }
 @media screen and (max-width: 670px) {
@@ -701,6 +847,23 @@ header {
         font-size: 2.5em;
         width: 90vw;
         padding-top: 50px;
+    }
+    .linear-wipe{
+        font-size: 22px;
+    }
+    .portfolio-item{
+        width: 90vw;
+    }
+    .comingsoon h4{
+        font-size: 25px;
+    }
+    .portfolio-title{
+        height: fit-content;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .portfolio-section{
+        padding-top: 20px;
     }
 }
 @media screen and (max-width: 450px) {
@@ -771,6 +934,15 @@ header {
     }
     .contact-page-form input, .contact-page-content textarea{
         width: 90vw;
+    }
+    .linear-wipe{
+        font-size: 16px;
+    }
+    .comingsoon h4{
+        font-size: 16px;
+    }
+    .portfolio-section{
+        padding-bottom: 20px;
     }
 }
 
