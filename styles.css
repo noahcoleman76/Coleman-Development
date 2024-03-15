@@ -114,6 +114,7 @@ header {
 
 .section .content {
     flex: 1;
+    background-color: red;
 }
 
 .section .content a {
