@@ -512,6 +512,7 @@ header {
     justify-content: center;
     background-color: lightgray;
     padding: 50px 0px;
+    flex-wrap: wrap;
 }
 .portfolio-item {
     background-color: white;
