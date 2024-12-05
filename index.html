@@ -9,8 +9,18 @@
     <link rel="icon" type="image/x-icon" href="./images/Coleman Development-logos/Screenshot 2024-02-29 at 10.47.24 PM.png">
 </head>
 
-<body onload="setTimeout(displayTyping, 2000)">
+<body>
     <div class="container">
+        <div id="top-modal" class="modal">
+            <video autoplay muted loop playsinline class="modal-video">
+              <source src="./videos/background.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="modal-content">
+              <h1>Your new site begins here</h1>
+            </div>
+          </div>
+
         <header>
             <a href="./index.html">
                 <img src="./images/Coleman Development-logos/imageedit_2_9065459732.png" alt="Logo" class="logo">
@@ -38,11 +48,11 @@
 
         <div class="message">
             <section class="black-section">
-                <div class="typing-animation" id="typing">
-                    <h2>Let's build your new site!</h2>
-                </div>
+              <div class="typing-animation" id="typing">
+                <h2>Let's build your new site!</h2>
+              </div>
             </section>
-        </div>
+          </div>
 
         <h2 class="easy">Coleman Development makes it easy to design, build, and launch</h2>
         <section class="three-step-section">
@@ -79,11 +89,7 @@
         </footer>
     </div>
 
-    <script>
-        function displayTyping() {
-            document.getElementById("typing").style.opacity = "1";
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>

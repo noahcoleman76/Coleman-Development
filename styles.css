@@ -21,9 +21,14 @@ header {
     align-items: center;
     padding: 20px 0;
     margin: 0 auto;
-    box-shadow: 0px 17px 16px -25px rgba(0,0,0,0.45);
-    /* background-color: rgb(62, 207, 255); */
-}
+    box-shadow: 0px 17px 16px -25px rgba(0, 0, 0, 0.45);
+    background-color: white;
+    position: fixed; /* Make the header fixed at the top */
+    top: 0; /* Align to the top of the viewport */
+    width: 100%; /* Ensure the header spans the full width of the viewport */
+    z-index: 1000; /* Place the header above other content */
+  }
+  
 
 .logo {
     width: 150px;
@@ -149,66 +154,66 @@ header {
     }
 }
 
+/* Message Section Container */
 .message {
     display: flex;
-    justify-content: left;
-    opacity: 90%;
-    height: 200px;
-    background-image: url("./images/pankaj-patel-_SgRNwAVNKw-unsplash.jpg");
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+    height: 200px; /* Adjust as needed for your design */
+    background-image: url("./images/pankaj-patel-_SgRNwAVNKw-unsplash.jpg"); /* Your background */
     background-attachment: fixed;
     background-size: cover;
-}
-
-.black-section {
-    color: #fff;
-    padding: 40px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-}
-
-.typing-animation {
-    overflow: hidden;
-    white-space: nowrap;
+    background-position: center; /* Ensures the background is centered */
+    z-index: 1; /* Normal stacking context */
+  }
+  
+  /* Typing Animation Wrapper */
+  .typing-animation {
+    overflow: hidden; /* Ensures text doesn't overflow while typing */
+    white-space: nowrap; /* Keeps text on a single line */
     margin: 0 auto;
     padding: 0;
     letter-spacing: 0.15em;
-    border-right: .15em solid #3ecfff;
-    animation: typing 1.3s steps(10, end),
-        blink-caret .75s step-end infinite;
+    border-right: 0.15em solid #3ecfff; /* Blinking caret */
     height: fit-content;
-    opacity: 0;
-    animation-delay: 1.3s;
-}
-
-.typing-animation h2 {
-    margin: 0px;
-    font-size: 2.5em;
-}
-
-@keyframes typing {
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.5s ease-in-out; /* Smooth fade-in effect */
+  }
+  
+  /* Activate Animation on Scroll */
+  .typing-animation.start-typing {
+    opacity: 1; /* Visible when animation starts */
+    animation: typing 2s steps(20, end), blink-caret 0.75s step-end infinite;
+  }
+  
+  /* Typing Animation Styles */
+  .typing-animation h2 {
+    margin: 0;
+    font-size: 2.5em; /* Adjust font size as needed */
+    color: white; /* Ensure text is visible on background */
+  }
+  
+  /* Keyframes for Typing */
+  @keyframes typing {
     from {
-        width: 0;
-        opacity: 1
+      width: 0;
     }
-
     to {
-        width: 100%;
-        opacity: 1
+      width: 100%;
     }
-}
-
-@keyframes blink-caret {
-
+  }
+  
+  /* Keyframes for Caret Blinking */
+  @keyframes blink-caret {
     from,
     to {
-        border-color: transparent
+      border-color: transparent;
     }
-
     50% {
-        border-color: #3ecfff;
+      border-color: #3ecfff;
     }
-}
+  }
+  
 
 
 .easy {
@@ -950,3 +955,53 @@ header {
 
 
 /* 3ecfff */
+
+/* styles.css */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 100; /* Ensure modal is above everything */
+  }
+  
+  .modal.show {
+    opacity: 1;
+    pointer-events: all;
+  }
+  
+  .modal-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+  
+  .modal-content {
+    position: relative; /* Ensures the content isn't affected by the video */
+    color: white;
+    text-align: center;
+    z-index: 1;
+    font-size: 2rem;
+    padding: 20px;
+  }
+  
+  body.modal-active .message {
+    z-index: -1; /* Push "message" below modal when active */
+  }
+  
