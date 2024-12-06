@@ -22,13 +22,15 @@ header {
     padding: 20px 0;
     margin: 0 auto;
     box-shadow: 0px 17px 16px -25px rgba(0, 0, 0, 0.45);
-    background-color: white;
-    position: fixed; /* Make the header fixed at the top */
-    top: 0; /* Align to the top of the viewport */
-    width: 100%; /* Ensure the header spans the full width of the viewport */
-    z-index: 1000; /* Place the header above other content */
-  }
-  
+    background-color: #f4f4f4;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.5s ease;
+    /* Smooth transition */
+}
+
 
 .logo {
     width: 150px;
@@ -41,13 +43,16 @@ header {
     gap: 40px;
 }
 
+/* Default link styles */
 .menu a {
     text-decoration: none;
     color: #333;
+    /* Default color */
     font-size: 1.2em;
     font-weight: bold;
     position: relative;
 }
+
 .menu a:after {
     content: '';
     position: absolute;
@@ -59,12 +64,27 @@ header {
     background-color: darkgray;
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
-  }
-  
-  .menu a:hover:after {
+}
+
+/* Change link color when modal is open */
+body.modal-open .menu a {
+    color: white;
+    /* Change color to white */
+}
+
+body.modal-open .menu a:after {
+    background-color: rgb(62, 207, 255);
+    /* Optional: change underline to match */
+}
+
+body.modal-open header {
+    background-color: transparent;
+}
+
+.menu a:hover:after {
     transform: scaleX(1);
     transform-origin: bottom left;
-  }
+}
 
 .menu a:hover {
     color: rgb(62, 207, 255);
@@ -73,6 +93,7 @@ header {
 .button {
     background-color: rgb(62, 207, 255);
     color: #fff;
+    margin-top: 200px;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -113,7 +134,7 @@ header {
     display: flex;
     gap: 40px;
     align-items: center;
-    margin: 40px auto 40px 100px;
+    margin: 300px auto 40px 100px;
 
 }
 
@@ -134,7 +155,7 @@ header {
 .section .content p {
     font-size: 1.2em;
     line-height: 1.6;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .section .image {
@@ -144,84 +165,117 @@ header {
 .section .image img {
     max-width: 100%;
     height: auto;
-    animation: slideMe .7s ease-in;
+    opacity: 0;
+    /* Start hidden */
+    transform: translateX(500px);
+    /* Start position */
+    transition: opacity 0.7s ease-in, transform 0.7s ease-in;
+    /* Smooth transition */
 }
 
-@keyframes slideMe {
-    0% {
-        transform: translateX(500px);
-        opacity: 0%;
-    }
+.section .image.animate img {
+    opacity: 1;
+    /* Fade in */
+    transform: translateX(0);
+    /* Slide into position */
 }
 
 /* Message Section Container */
 .message {
     display: flex;
-    justify-content: center; /* Centers content horizontally */
-    align-items: center; /* Centers content vertically */
-    height: 200px; /* Adjust as needed for your design */
-    background-image: url("./images/pankaj-patel-_SgRNwAVNKw-unsplash.jpg"); /* Your background */
+    justify-content: left;
+    /* Centers content horizontally */
+    align-items: center;
+    /* Centers content vertically */
+    height: 200px;
+    /* Adjust as needed for your design */
+    background-image: url("./images/pankaj-patel-_SgRNwAVNKw-unsplash.jpg");
+    /* Your background */
     background-attachment: fixed;
     background-size: cover;
-    background-position: center; /* Ensures the background is centered */
-    z-index: 1; /* Normal stacking context */
-  }
-  
-  /* Typing Animation Wrapper */
-  .typing-animation {
-    overflow: hidden; /* Ensures text doesn't overflow while typing */
-    white-space: nowrap; /* Keeps text on a single line */
-    margin: 0 auto;
-    padding: 0;
-    letter-spacing: 0.15em;
-    border-right: 0.15em solid #3ecfff; /* Blinking caret */
-    height: fit-content;
-    opacity: 0; /* Hidden by default */
-    transition: opacity 0.5s ease-in-out; /* Smooth fade-in effect */
-  }
-  
-  /* Activate Animation on Scroll */
-  .typing-animation.start-typing {
-    opacity: 1; /* Visible when animation starts */
+    background-position: center;
+    /* Ensures the background is centered */
+    z-index: 1;
+    /* Normal stacking context */
+}
+
+/* Typing Animation Container */
+.typing-animation {
+    overflow: hidden;
+    white-space: nowrap;
+    opacity: 0;
+    /* Initially hidden */
+    border-right: 0.15em solid #3ecfff;
+    /* Simulates a blinking caret */
+    transition: opacity 0.5s ease-in-out;
+    /* Smooth fade-in effect */
+}
+
+/* Start Typing Animation */
+.typing-animation.start-typing {
+    opacity: 1;
+    /* Reveal the text */
     animation: typing 2s steps(20, end), blink-caret 0.75s step-end infinite;
-  }
-  
-  /* Typing Animation Styles */
-  .typing-animation h2 {
-    margin: 0;
-    font-size: 2.5em; /* Adjust font size as needed */
-    color: white; /* Ensure text is visible on background */
-  }
-  
-  /* Keyframes for Typing */
-  @keyframes typing {
+}
+
+/* Typing Animation Keyframes */
+@keyframes typing {
     from {
-      width: 0;
+        width: 0;
     }
+
     to {
-      width: 100%;
+        width: 100%;
     }
-  }
-  
-  /* Keyframes for Caret Blinking */
-  @keyframes blink-caret {
+}
+
+@keyframes blink-caret {
+
     from,
     to {
-      border-color: transparent;
+        border-color: transparent;
     }
+
     50% {
-      border-color: #3ecfff;
+        border-color: #3ecfff;
     }
-  }
-  
+}
+
+/* H2 Styling Inside Typing Animation */
+.typing-animation h2 {
+    margin: 0;
+    margin-left: 150px;
+    font-size: 3em;
+    /* Adjust font size as needed */
+    color: white;
+    /* Ensure text is visible */
+    font-weight: 400;
+}
+
 
 
 .easy {
     text-align: center;
     font-weight: bold;
     font-size: 4em;
-    width: 50vw;
+    width: 65vw;
     margin: 100px auto;
+}
+
+.popup-onscroll {
+    opacity: 0;
+    /* Initially hidden */
+    transform: translateY(20px);
+    /* Slightly offset */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    /* Smooth transition */
+}
+
+.popup-onscroll.visible {
+    opacity: 1;
+    /* Fully visible */
+    transform: translateY(0);
+    /* Slide into place */
 }
 
 .three-step-section {
@@ -282,29 +336,39 @@ header {
     animation: wiggle 2s linear infinite;
     animation-delay: 3s;
 }
+
 @keyframes wiggle {
-    0%, 7% {
-      transform: rotateZ(0);
+
+    0%,
+    7% {
+        transform: rotateZ(0);
     }
+
     15% {
-      transform: rotateZ(-15deg);
+        transform: rotateZ(-15deg);
     }
+
     20% {
-      transform: rotateZ(10deg);
+        transform: rotateZ(10deg);
     }
+
     25% {
-      transform: rotateZ(-10deg);
+        transform: rotateZ(-10deg);
     }
+
     30% {
-      transform: rotateZ(6deg);
+        transform: rotateZ(6deg);
     }
+
     35% {
-      transform: rotateZ(-4deg);
+        transform: rotateZ(-4deg);
     }
-    40%, 100% {
-      transform: rotateZ(0);
+
+    40%,
+    100% {
+        transform: rotateZ(0);
     }
-  }
+}
 
 .contact-section .a:hover {
     background-color: rgb(192, 192, 192);
@@ -463,7 +527,7 @@ header {
     align-items: center;
 }
 
-.about-description p{
+.about-description p {
     font-size: 1.2em;
     line-height: 1.6;
     width: 35vw;
@@ -485,13 +549,17 @@ header {
     width: 20vw;
     animation: slideMe .7s ease-in;
 }
-.founder{
+
+.founder {
     width: 200px;
     margin-top: 75px;
 }
-.founder h3, p{
+
+.founder h3,
+p {
     margin: 0px;
 }
+
 #myImage {
     opacity: 0;
     animation: fadeIn 1s ease-in-out forwards;
@@ -503,6 +571,7 @@ header {
         opacity: 0;
         transform: scale(0);
     }
+
     100% {
         opacity: 1;
         transform: scale(1) translateX(-75px);
@@ -511,7 +580,7 @@ header {
 
 
 /* Portfolio Page */
-.portfolio-section{
+.portfolio-section {
     width: 100vw;
     display: flex;
     justify-content: center;
@@ -519,6 +588,7 @@ header {
     padding: 50px 0px;
     flex-wrap: wrap;
 }
+
 .portfolio-item {
     background-color: white;
     display: inline-block;
@@ -556,7 +626,8 @@ header {
     justify-content: center;
     align-items: center;
 }
-.info h3{
+
+.info h3 {
     margin: 0px;
     padding: 0px 10px;
     font-size: 3vw;
@@ -568,25 +639,29 @@ header {
     transform: translateY(0);
     height: 100%;
 }
-.link-icon{
+
+.link-icon {
     max-width: 20px;
     margin-left: 10px;
 }
-.visit{
+
+.visit {
     display: flex;
     margin-top: 25px;
     align-items: center;
     font-size: 2vw;
     transition: .7s ease;
 }
-.visit:hover{
+
+.visit:hover {
     transform: scale(.9);
 }
+
 .hover-underline-animation {
     position: relative;
-  }
-  
-  .hover-underline-animation:after {
+}
+
+.hover-underline-animation:after {
     content: '';
     position: absolute;
     width: 100%;
@@ -597,13 +672,14 @@ header {
     background-color: #3ecfff;
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
-  }
-  
-  .hover-underline-animation:hover:after {
+}
+
+.hover-underline-animation:hover:after {
     transform: scaleX(1);
     transform-origin: bottom left;
-  }
-.portfolio-title{
+}
+
+.portfolio-title {
     width: 100%;
     background-color: #3ecfff;
     height: 20vh;
@@ -611,6 +687,7 @@ header {
     align-items: center;
     justify-content: center;
 }
+
 .linear-wipe {
     text-align: center;
     font-size: 45px;
@@ -621,21 +698,24 @@ header {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    
+
     animation: shine 2s linear infinite;
-  }
-  @keyframes shine {
+}
+
+@keyframes shine {
     to {
-      background-position: 200% center;
+        background-position: 200% center;
     }
-  }
-.comingsoon{
+}
+
+.comingsoon {
     width: 100%;
     display: flex;
     justify-content: center;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
-.comingsoon h4{
+
+.comingsoon h4 {
     font-size: 45px;
 }
 
@@ -690,265 +770,335 @@ header {
 
 
 @media screen and (max-width: 1058px) {
-    .section{
+    .section {
         align-items: start;
     }
-    .about-image{
+
+    .about-image {
         margin: auto -75px 0px 0px;
     }
-    .about-image img{
+
+    .about-image img {
         height: 100%;
     }
-    .delivering{
+
+    .delivering {
         width: 75vw;
     }
 }
+
 @media screen and (max-width: 900px) {
-    .section{
+    .section {
         margin-left: 20px;
     }
-    .easy{
+
+    .easy {
         width: 90vw;
         margin: auto;
         margin-top: 50px;
     }
-    .about-content{
+
+    .about-content {
         flex-wrap: wrap;
     }
-    .about-image{
+
+    .about-image {
         margin-left: -60px;
     }
-    .about-image .noah-image-1{
+
+    .about-image .noah-image-1 {
         width: 35vw;
     }
-    .about-image h3{
+
+    .about-image h3 {
         text-wrap: nowrap;
     }
-    .about-description{
+
+    .about-description {
         width: 75vw;
     }
-    .about-description p{
+
+    .about-description p {
         width: auto;
     }
+
     @keyframes fadeIn {
         0% {
             opacity: 0;
             transform: scale(0);
         }
+
         100% {
             opacity: 1;
             transform: scale(1) translateX(-60px);
         }
     }
-    .service-item{
+
+    .service-item {
         width: 40vw;
     }
+
     .visit {
         font-size: 2vw;
     }
-    .info h3{
+
+    .info h3 {
         font-size: 2.5vw;
     }
-    .linear-wipe{
+
+    .linear-wipe {
         font-size: 35px;
     }
-    .portfolio-item{
+
+    .portfolio-item {
         width: 45vw;
     }
 }
+
 @media screen and (max-width: 800px) {
-    .section{
+    .section {
         flex-direction: column;
         width: 75vw;
         text-align: center;
         justify-content: center;
         margin: auto;
     }
-    header{
+
+    header {
         flex-direction: column;
         margin-bottom: 50px;
     }
-    .menu{
+
+    .menu {
         margin-top: 20px;
         margin-bottom: 20px;
     }
-    .section .image{
+
+    .section .image {
         width: 100%;
     }
-    .logo{
+
+    .logo {
         margin: 0px;
         width: 40vw;
     }
-    .content a{
+
+    .content a {
         display: none;
     }
-    .easy{
+
+    .easy {
         font-size: 3em;
     }
-    .contact-section{
+
+    .contact-section {
         flex-direction: column;
         text-align: center;
     }
-    .contact-section h2{
+
+    .contact-section h2 {
         margin-right: 0px;
     }
-    .contact-info h1, p{
+
+    .contact-info h1,
+    p {
         font-size: 1.5em;
     }
-    .black-section h2{
+
+    .black-section h2 {
         font-size: 1.5em;
     }
-    .comingsoon h4{
+
+    .comingsoon h4 {
         font-size: 35px;
     }
 }
+
 @media screen and (max-width: 700px) {
-    .service-item{
+    .service-item {
         width: 90vw;
     }
-    .portfolio-section{
+
+    .portfolio-section {
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
-    .portfolio-item{
+
+    .portfolio-item {
         width: 75vw;
     }
-    .info h3{
+
+    .info h3 {
         font-size: 5vw;
     }
 }
+
 @media screen and (max-width: 670px) {
-    .three-step-section{
+    .three-step-section {
         flex-direction: column;
         align-items: center;
     }
-    footer{
+
+    footer {
         flex-direction: column;
     }
-    footer .logo{
+
+    footer .logo {
         min-width: 50vw;
     }
-    .about-image{
+
+    .about-image {
         margin-right: 50px;
     }
-    .about-image .noah-image-1{
+
+    .about-image .noah-image-1 {
         width: 50vw;
     }
+
     @keyframes fadeIn {
         0% {
             opacity: 0;
             transform: scale(0);
         }
+
         100% {
             opacity: 1;
             transform: scale(1) translateX(-50px);
         }
     }
-    .delivering{
+
+    .delivering {
         padding: 10px;
         font-size: 2em;
         margin: 50px auto;
     }
-    .services-title{
+
+    .services-title {
         font-size: 2.5em;
         width: 90vw;
         padding-top: 50px;
     }
-    .linear-wipe{
+
+    .linear-wipe {
         font-size: 22px;
     }
-    .portfolio-item{
+
+    .portfolio-item {
         width: 90vw;
     }
-    .comingsoon h4{
+
+    .comingsoon h4 {
         font-size: 25px;
     }
-    .portfolio-title{
+
+    .portfolio-title {
         height: fit-content;
         padding-top: 10px;
         padding-bottom: 10px;
     }
-    .portfolio-section{
+
+    .portfolio-section {
         padding-top: 20px;
     }
 }
+
 @media screen and (max-width: 450px) {
-    .menu{
+    .menu {
         flex-wrap: wrap;
         padding-left: 10px;
         padding-right: 10px;
         justify-content: center;
 
     }
-    .black-section{
+
+    .black-section {
         padding: 10px;
     }
-    .footer .contact-info{
+
+    .footer .contact-info {
         padding: 10px;
     }
-    .footer .contact-info p{
+
+    .footer .contact-info p {
         font-size: 16px;
     }
-    .typing-animation h2{
+
+    .typing-animation h2 {
         font-size: 18px;
     }
-    .message{
+
+    .message {
         justify-content: center;
         margin-right: none;
     }
-    .about-section{
+
+    .about-section {
         padding-left: 10px;
         padding-right: 10px;
     }
-    .about-section h2{
+
+    .about-section h2 {
         font-size: 35px;
 
     }
-    .about-image{
+
+    .about-image {
         margin-right: 30px;
     }
-    .about-image .noah-image-1{
+
+    .about-image .noah-image-1 {
         width: 50vw;
     }
+
     @keyframes fadeIn {
         0% {
             opacity: 0;
             transform: scale(0);
         }
+
         100% {
             opacity: 1;
             transform: scale(.75) translateX(-30px);
         }
     }
-    .delivering{
+
+    .delivering {
         padding: 10px;
         font-size: 1.5em;
         margin: 50px auto;
     }
-    .services-title{
+
+    .services-title {
         font-size: 2em;
         width: 90vw;
         padding-top: 50px;
     }
-    .contact-page-section{
+
+    .contact-page-section {
         padding-left: 10px;
         padding-right: 10px;
     }
-    .contact-page-section p{
+
+    .contact-page-section p {
         text-wrap: wrap;
         font-size: 16px;
     }
-    .contact-page-form input, .contact-page-content textarea{
+
+    .contact-page-form input,
+    .contact-page-content textarea {
         width: 90vw;
     }
-    .linear-wipe{
+
+    .linear-wipe {
         font-size: 16px;
     }
-    .comingsoon h4{
+
+    .comingsoon h4 {
         font-size: 16px;
     }
-    .portfolio-section{
+
+    .portfolio-section {
         padding-bottom: 20px;
     }
 }
@@ -960,9 +1110,9 @@ header {
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-  }
-  
-  .modal {
+}
+
+.modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -974,34 +1124,57 @@ body {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.5s ease-in-out;
-    z-index: 100; /* Ensure modal is above everything */
-  }
-  
-  .modal.show {
+    z-index: 100;
+    /* Ensure modal is above everything */
+}
+
+.modal.show {
     opacity: 1;
     pointer-events: all;
-  }
-  
-  .modal-video {
+}
+
+.modal-video {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    filter: hue-rotate(30deg) saturate(1.2) brightness(1.1);
+    /* Subtle adjustments */
     z-index: -1;
-  }
-  
-  .modal-content {
-    position: relative; /* Ensures the content isn't affected by the video */
+    /* Keeps the video behind content */
+    transition: filter 0.5s ease;
+    /* Smooth transition for the filter */
+}
+
+
+
+.modal-content {
+    position: relative;
+    /* Ensures the content isn't affected by the video */
     color: white;
     text-align: center;
     z-index: 1;
     font-size: 2rem;
     padding: 20px;
-  }
-  
-  body.modal-active .message {
-    z-index: -1; /* Push "message" below modal when active */
-  }
-  
+}
+
+body.modal-active .message {
+    z-index: -1;
+    /* Push "message" below modal when active */
+}
+
+.modal-content h1 {
+    margin: 0;
+    font-weight: bolder;
+    color: #fff;
+    /* Sharp text color */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7),
+        /* Slight shadow for depth */
+        0 0 15px rgba(255, 255, 255, 0.5);
+    /* Glow effect */
+    font-size: 3.5rem;
+    /* Adjust font size */
+
+}
