@@ -94,3 +94,37 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+// count up statistcs - home page
+
+document.addEventListener("DOMContentLoaded", () => {
+  const statNumbers = document.querySelectorAll('.stat-number');
+
+  const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              const target = entry.target;
+              const targetNumber = parseInt(target.getAttribute('data-target'));
+              let currentNumber = 0;
+              const increment = targetNumber / 150; // Adjust the speed by changing the divisor
+
+              const updateCounter = () => {
+                  currentNumber += increment;
+                  if (currentNumber >= targetNumber) {
+                      target.textContent = `${targetNumber}%`; // Add the % symbol
+                      clearInterval(counterInterval);
+                  } else {
+                      target.textContent = `${Math.floor(currentNumber)}%`; // Add the % symbol
+                  }
+              };
+
+              const counterInterval = setInterval(updateCounter, 10); // Adjust the timing for the speed
+              observer.unobserve(target); // Stop observing once it has counted
+          }
+      });
+  }, {
+      threshold: 0.5 // Adjust when the number starts counting (50% visible in viewport)
+  });
+
+  statNumbers.forEach(stat => observer.observe(stat));
+});
