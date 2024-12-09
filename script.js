@@ -71,3 +71,26 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener('scroll', handleScroll); // Listen for scroll events
   handleScroll(); // Trigger on page load in case elements are already in view
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("top-modal");
+  const logoImage = document.querySelector('.logo'); // Select the logo image
+  let modalHidden = false;
+
+  document.addEventListener("scroll", () => {
+    const scrollPosition = window.scrollY;
+
+    // Show the modal when scrolled back to the top
+    if (scrollPosition === 0) {
+      modal.classList.add("show");
+      document.body.classList.add("modal-open");
+      modalHidden = false;
+      logoImage.src = "./images/Coleman Development-logos/imageedit_2_9065459732.png"; // Reset logo
+    } else {
+      // Hide the modal when scrolling down
+      modal.classList.remove("show");
+      document.body.classList.remove("modal-open");
+      modalHidden = true;
+      logoImage.src = "./images/Coleman Development-logos/imageedit_16_7516701808.png"; // Change logo
+    }
+  });
+});
