@@ -1,7 +1,3 @@
-// Start at the top of the page when refreshed
-
-window.onbeforeunload = () => window.scrollTo(0, 0);
-
 // Load content depending on if modal is open or not
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -84,13 +80,13 @@ document.addEventListener("DOMContentLoaded", () => {
       modal.classList.add("show");
       document.body.classList.add("modal-open");
       modalHidden = false;
-      logoImage.src = "./images/Coleman Development-logos/imageedit_2_9065459732.png"; // Reset logo
+      logoImage.src = "./images/Coleman Development-logos/codev logo white.png"; // Reset logo
     } else {
       // Hide the modal when scrolling down
       modal.classList.remove("show");
       document.body.classList.remove("modal-open");
       modalHidden = true;
-      logoImage.src = "./images/Coleman Development-logos/imageedit_16_7516701808.png"; // Change logo
+      logoImage.src = "./images/Coleman Development-logos/codev logo.png"; // Change logo
     }
   });
 });
