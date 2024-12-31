@@ -102,7 +102,7 @@ body.modal-open header {
 }
 
 .btn-grad {
-    background-image: linear-gradient(to right, #5a819a 0%, #3ecfff 51%, #5a819a 100%);
+    background-image: linear-gradient(to right, #306eb9 0%, #3ecfff 51%, #306eb9 100%);
     margin: 10px;
     font-size: 1.2em;
     padding: 15px 45px;
@@ -167,7 +167,7 @@ body.modal-open header {
     height: auto;
     opacity: 0;
     /* Start hidden */
-    transform: translateX(500px);
+    transform: translateX(-500px);
     /* Start position */
     transition: opacity 0.7s ease-in, transform 0.7s ease-in;
     /* Smooth transition */
@@ -411,6 +411,12 @@ body.modal-open header {
     background-color: #333;
 }
 
+.services-title-container {
+    width: 100vw;
+    background: linear-gradient(to bottom, #3ECFFF,#306eb9, #333);
+}
+
+
 .services-title {
     font-size: 65px;
     font-weight: bold;
@@ -639,6 +645,9 @@ p {
     transform: translateY(0);
     height: 100%;
 }
+iframe{
+    border: none;
+}
 
 .link-icon {
     max-width: 20px;
@@ -766,342 +775,6 @@ p {
     border-radius: 5px;
     font-size: 1.2em;
     cursor: pointer;
-}
-
-
-
-@media screen and (max-width: 1058px) {
-    .section {
-        align-items: start;
-    }
-
-    .about-image {
-        margin: auto -75px 0px 0px;
-    }
-
-    .about-image img {
-        height: 100%;
-    }
-
-    .delivering {
-        width: 75vw;
-    }
-}
-
-@media screen and (max-width: 900px) {
-    .section {
-        margin-left: 20px;
-    }
-
-    .easy {
-        width: 90vw;
-        margin: auto;
-        margin-top: 50px;
-    }
-
-    .about-content {
-        flex-wrap: wrap;
-    }
-
-    .about-image {
-        margin-left: -60px;
-    }
-
-    .about-image .noah-image-1 {
-        width: 35vw;
-    }
-
-    .about-image h3 {
-        text-wrap: nowrap;
-    }
-
-    .about-description {
-        width: 75vw;
-    }
-
-    .about-description p {
-        width: auto;
-    }
-
-    @keyframes fadeIn {
-        0% {
-            opacity: 0;
-            transform: scale(0);
-        }
-
-        100% {
-            opacity: 1;
-            transform: scale(1) translateX(-60px);
-        }
-    }
-
-    .service-item {
-        width: 40vw;
-    }
-
-    .visit {
-        font-size: 2vw;
-    }
-
-    .info h3 {
-        font-size: 2.5vw;
-    }
-
-    .linear-wipe {
-        font-size: 35px;
-    }
-
-    .portfolio-item {
-        width: 45vw;
-    }
-}
-
-@media screen and (max-width: 800px) {
-    .section {
-        flex-direction: column;
-        width: 75vw;
-        text-align: center;
-        justify-content: center;
-        margin: auto;
-    }
-
-    header {
-        flex-direction: column;
-        margin-bottom: 50px;
-    }
-
-    .menu {
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-
-    .section .image {
-        width: 100%;
-    }
-
-    .logo {
-        margin: 0px;
-        width: 40vw;
-    }
-
-    .content a {
-        display: none;
-    }
-
-    .easy {
-        font-size: 3em;
-    }
-
-    .contact-section {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .contact-section h2 {
-        margin-right: 0px;
-    }
-
-    .contact-info h1,
-    p {
-        font-size: 1.5em;
-    }
-
-    .black-section h2 {
-        font-size: 1.5em;
-    }
-
-    .comingsoon h4 {
-        font-size: 35px;
-    }
-}
-
-@media screen and (max-width: 700px) {
-    .service-item {
-        width: 90vw;
-    }
-
-    .portfolio-section {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .portfolio-item {
-        width: 75vw;
-    }
-
-    .info h3 {
-        font-size: 5vw;
-    }
-}
-
-@media screen and (max-width: 670px) {
-    .three-step-section {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    footer {
-        flex-direction: column;
-    }
-
-    footer .logo {
-        min-width: 50vw;
-    }
-
-    .about-image {
-        margin-right: 50px;
-    }
-
-    .about-image .noah-image-1 {
-        width: 50vw;
-    }
-
-    @keyframes fadeIn {
-        0% {
-            opacity: 0;
-            transform: scale(0);
-        }
-
-        100% {
-            opacity: 1;
-            transform: scale(1) translateX(-50px);
-        }
-    }
-
-    .delivering {
-        padding: 10px;
-        font-size: 2em;
-        margin: 50px auto;
-    }
-
-    .services-title {
-        font-size: 2.5em;
-        width: 90vw;
-        padding-top: 50px;
-    }
-
-    .linear-wipe {
-        font-size: 22px;
-    }
-
-    .portfolio-item {
-        width: 90vw;
-    }
-
-    .comingsoon h4 {
-        font-size: 25px;
-    }
-
-    .portfolio-title {
-        height: fit-content;
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-
-    .portfolio-section {
-        padding-top: 20px;
-    }
-}
-
-@media screen and (max-width: 450px) {
-    .menu {
-        flex-wrap: wrap;
-        padding-left: 10px;
-        padding-right: 10px;
-        justify-content: center;
-
-    }
-
-    .black-section {
-        padding: 10px;
-    }
-
-    .footer .contact-info {
-        padding: 10px;
-    }
-
-    .footer .contact-info p {
-        font-size: 16px;
-    }
-
-    .typing-animation h2 {
-        font-size: 18px;
-    }
-
-    .message {
-        justify-content: center;
-        margin-right: none;
-    }
-
-    .about-section {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
-    .about-section h2 {
-        font-size: 35px;
-
-    }
-
-    .about-image {
-        margin-right: 30px;
-    }
-
-    .about-image .noah-image-1 {
-        width: 50vw;
-    }
-
-    @keyframes fadeIn {
-        0% {
-            opacity: 0;
-            transform: scale(0);
-        }
-
-        100% {
-            opacity: 1;
-            transform: scale(.75) translateX(-30px);
-        }
-    }
-
-    .delivering {
-        padding: 10px;
-        font-size: 1.5em;
-        margin: 50px auto;
-    }
-
-    .services-title {
-        font-size: 2em;
-        width: 90vw;
-        padding-top: 50px;
-    }
-
-    .contact-page-section {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
-    .contact-page-section p {
-        text-wrap: wrap;
-        font-size: 16px;
-    }
-
-    .contact-page-form input,
-    .contact-page-content textarea {
-        width: 90vw;
-    }
-
-    .linear-wipe {
-        font-size: 16px;
-    }
-
-    .comingsoon h4 {
-        font-size: 16px;
-    }
-
-    .portfolio-section {
-        padding-bottom: 20px;
-    }
 }
 
 
@@ -1406,4 +1079,361 @@ body.modal-active .message {
 }
 .monthly-cost{
     font-size: medium;
+}
+
+/* Smaller Screen Sizes:  */
+
+@media screen and (max-width: 1058px) {
+    .section {
+        align-items: start;
+    }
+
+    .about-image img {
+        height: 100%;
+    }
+
+    .delivering {
+        width: 75vw;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .section {
+        margin-left: 20px;
+    }
+
+    .easy {
+        width: 90vw;
+        margin: auto;
+        margin-top: 50px;
+    }
+
+    .about-content {
+        flex-wrap: wrap;
+    }
+
+    .about-image .noah-image-1 {
+        width: 35vw;
+    }
+
+    .about-image h3 {
+        text-wrap: nowrap;
+    }
+
+    .about-description {
+        width: 75vw;
+    }
+
+    .about-description p {
+        width: auto;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        100% {
+            opacity: 1;
+            transform: scale(1) translateX(-60px);
+        }
+    }
+
+    .service-item {
+        width: 40vw;
+    }
+    .services-title{
+        width: 80vw;
+    }
+
+    .visit {
+        font-size: 2vw;
+    }
+
+    .info h3 {
+        font-size: 2.5vw;
+    }
+
+    .linear-wipe {
+        font-size: 35px;
+    }
+
+    .portfolio-item {
+        width: 45vw;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .section {
+        flex-direction: column;
+        width: 75vw;
+        text-align: center;
+        justify-content: center;
+        margin: auto;
+    }
+
+    header {
+        flex-direction: column;
+        margin-bottom: 50px;
+    }
+
+    .menu {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .section .image {
+        width: 100%;
+    }
+
+    .logo {
+        margin: 0px;
+        width: 40vw;
+    }
+
+    .content{
+        margin-top: 500px;
+    }
+    .content a {
+        display: none;
+    }
+
+    .easy {
+        font-size: 3em;
+    }
+
+    .contact-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contact-section h2 {
+        margin-right: 0px;
+    }
+
+    .contact-info h1,
+    p {
+        font-size: 1.5em;
+    }
+
+    .black-section h2 {
+        font-size: 1.5em;
+    }
+
+    .comingsoon h4 {
+        font-size: 35px;
+    }
+    .about-section{
+        margin-top: 250px;
+    }
+    .services-page-container{
+        margin-top: 200px;
+    }
+    .portfolio-title{
+        margin-top: 250px;
+    }
+    .contact-page-content{
+        margin-top: 200px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .service-item {
+        width: 90vw;
+    }
+
+    .portfolio-section {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .portfolio-item {
+        width: 75vw;
+    }
+
+    .info h3 {
+        font-size: 5vw;
+    }
+    .services-title{
+        width: 90vw;
+    }
+    .delivering{
+        width: 90vw;
+        padding: 45px 0px;
+    }
+}
+
+@media screen and (max-width: 670px) {
+    .three-step-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+
+    footer .logo {
+        min-width: 50vw;
+    }
+
+    .about-image .noah-image-1 {
+        width: 50vw;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        100% {
+            opacity: 1;
+            transform: scale(1) translateX(-50px);
+        }
+    }
+
+    .delivering {
+        padding: 10px;
+        font-size: 2em;
+        margin: 50px auto;
+    }
+
+    .services-title {
+        font-size: 2.5em;
+        width: 90vw;
+        padding-top: 100px;
+        margin-top: 225px;
+    }
+
+    .linear-wipe {
+        font-size: 22px;
+    }
+
+    .portfolio-item {
+        width: 90vw;
+    }
+
+    .comingsoon h4 {
+        font-size: 25px;
+    }
+
+    .portfolio-title {
+        height: fit-content;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .portfolio-section {
+        padding-top: 20px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .content{
+        margin-top: 350px;
+    }
+    .typing-animation h2{
+        margin-left: 0px;
+    }
+    .menu {
+        flex-wrap: wrap;
+        padding-left: 10px;
+        padding-right: 10px;
+        justify-content: center;
+
+    }
+
+    .black-section {
+        padding: 10px;
+    }
+
+    .footer .contact-info {
+        padding: 10px;
+    }
+
+    .footer .contact-info p {
+        font-size: 16px;
+    }
+
+    .typing-animation h2 {
+        font-size: 18px;
+    }
+
+    .message {
+        justify-content: center;
+        margin-right: none;
+    }
+
+    .about-section {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .about-section h2 {
+        font-size: 35px;
+    }
+    .about-image{
+        justify-content: center;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        100% {
+            opacity: 1;
+            transform: scale(.75) translateX(-30px);
+        }
+    }
+
+    .delivering {
+        padding: 10px;
+        font-size: 1.5em;
+        margin: 50px auto;
+    }
+
+    .services-title {
+        font-size: 2em;
+        width: 90vw;
+        padding-top: 100px;
+        margin-top: 200px;
+    }
+
+    .contact-page-section {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .contact-page-section p {
+        text-wrap: wrap;
+        font-size: 16px;
+    }
+
+    .contact-page-form input,
+    .contact-page-content textarea {
+        width: 90vw;
+    }
+
+    .linear-wipe {
+        font-size: 16px;
+    }
+
+    .comingsoon h4 {
+        font-size: 16px;
+    }
+
+    .portfolio-section {
+        padding-bottom: 20px;
+    }
+    .portfolio-title h1{
+        padding-top: 50px;
+    }
+    .portfolio-title{
+        margin-top: 200px;
+    }
 }
