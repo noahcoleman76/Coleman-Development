@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dealership Promotion</title>
-    <link rel="stylesheet" href="/promoStyles.css">
+    <link rel="stylesheet" href="../../promoStyles.css">
     <script>
         function clearInputs() {
             sessionStorage.clear(); // Clear session storage to remove previous input values
@@ -20,7 +20,7 @@
             let fname = document.getElementById('fname').value.trim();
             let lname = document.getElementById('lname').value.trim();
             let email = document.getElementById('email').value.trim();
-            let dealership = "60 Days Free Promo";
+            let dealership = "Prestman Auto SLC";
 
             if (!fname || !lname || !email) {
                 alert("All fields are required.");
@@ -49,8 +49,9 @@
 <body>
     <div class="form-container">
         <img src="../../images/Client Logos/QQlogo.png">
+        <img src="./logo.png">
 
-        <p>Your Dealership has provided a special wash benefit for your new car. Enter your information below for
+        <p>Prestman Auto has provided a special wash benefit for your new car. Enter your information below for
             promotion details</p>
         <form onsubmit="submitForm(event)">
             <label for="fname">First Name:</label>
