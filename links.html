@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dealership Partners | Coleman Dev</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: #0f172a;
+            color: #e5e7eb;
+            min-height: 100vh;
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+        }
+
+        .page {
+            width: 100%;
+            max-width: 1100px;
+            padding: 32px 16px 48px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        header h1 {
+            font-size: clamp(1.9rem, 2.4vw, 2.4rem);
+            margin: 0 0 8px;
+            color: #f9fafb;
+        }
+
+        header p {
+            margin: 0;
+            color: #9ca3af;
+            font-size: 0.95rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .card {
+            background: radial-gradient(circle at top left, #374151 0, #111827 55%);
+            border-radius: 18px;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            box-shadow:
+                0 10px 24px rgba(15, 23, 42, 0.7),
+                0 0 0 1px rgba(15, 23, 42, 0.8);
+            overflow: hidden;
+            transition:
+                transform 0.18s ease-out,
+                box-shadow 0.18s ease-out,
+                border-color 0.18s ease-out,
+                background 0.18s ease-out;
+            /* Fixed overall card height so top "half" is consistent */
+            height: 260px;
+        }
+
+        .card:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow:
+                0 18px 40px rgba(15, 23, 42, 0.95),
+                0 0 0 1px rgba(59, 130, 246, 0.85);
+            border-color: rgba(59, 130, 246, 0.95);
+            background: radial-gradient(circle at top left, #4b5563 0, #020617 60%);
+            cursor: pointer;
+        }
+
+        /* Logo: same box size for all */
+        .card-logo {
+            width: 100%;
+            height: 130px;
+            /* same height for every logo */
+            object-fit: contain;
+            /* keep aspect ratio, no cropping */
+            background: rgba(15, 23, 42, 0.85);
+            padding: 12px 16px;
+            display: block;
+        }
+
+
+        .card-body {
+            flex: 1;
+            padding: 14px 16px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .card-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #f9fafb;
+        }
+
+        .card-url {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            word-break: break-all;
+        }
+
+        .empty {
+            text-align: center;
+            color: #9ca3af;
+            margin-top: 32px;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 480px) {
+            .page {
+                padding-inline: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="page">
+        <header>
+            <h1>Dealership Partners</h1>
+            <p>Select a dealership below to open its dedicated page.</p>
+        </header>
+
+        <section id="dealership-grid" class="grid"></section>
+
+        <p id="empty-state" class="empty" style="display: none;">
+            No dealerships defined yet. Add folder names to the <code>dealerships</code> array in the script.
+        </p>
+    </main>
+
+    <script>
+        // 🔧 Edit this array with your dealership folder names.
+        const dealerships = [
+            "Prestman-Auto",
+            "Fast-Start-Auto",
+            "Fiuza-Motors",
+            "Low-Book-Sales",
+            "National-Auto-Plaza",
+            "Peterson-Auto-Sales",
+            "Southtowne-Mitsubishi",
+        ];
+
+        const grid = document.getElementById("dealership-grid");
+        const emptyState = document.getElementById("empty-state");
+
+        // Convert "Prestman-Auto" -> "Prestman Auto"
+        function folderToDisplayName(folder) {
+            return folder.replace(/-/g, " ");
+        }
+
+        function renderDealerships() {
+            if (!dealerships.length) {
+                emptyState.style.display = "block";
+                return;
+            }
+
+            dealerships.forEach((folder) => {
+                const name = folderToDisplayName(folder);
+
+                const href = `https://ColemanDev.com/Dealerships/${folder}/`;
+                const logoSrc = `Dealerships/${folder}/logo.png`;
+
+                const link = document.createElement("a");
+                link.href = href;
+                link.className = "card-link";
+
+                const card = document.createElement("div");
+                card.className = "card";
+
+                const img = document.createElement("img");
+                img.src = logoSrc;
+                img.alt = `${name} logo`;
+                img.className = "card-logo";
+
+                const body = document.createElement("div");
+                body.className = "card-body";
+
+                const nameEl = document.createElement("div");
+                nameEl.className = "card-name";
+                nameEl.textContent = name;
+
+                const urlEl = document.createElement("div");
+                urlEl.className = "card-url";
+
+                body.appendChild(nameEl);
+
+                card.appendChild(img);
+                card.appendChild(body);
+                link.appendChild(card);
+                grid.appendChild(link);
+            });
+        }
+
+        renderDealerships();
+    </script>
+</body>
+
+</html>
