@@ -2,71 +2,81 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dealership Promotion</title>
-    <link rel="stylesheet" href="/promoStyles.css">
-    <script>
-        function clearInputs() {
-            sessionStorage.clear(); // Clear session storage to remove previous input values
-            document.getElementById('fname').value = "";
-            document.getElementById('lname').value = "";
-            document.getElementById('email').value = "";
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dealership Promotion</title>
+  <link rel="stylesheet" href="./promoStyles.css" />
+  <script>
+    function clearInputs() {
+      sessionStorage.clear();
+      document.getElementById('fname').value = "";
+      document.getElementById('lname').value = "";
+      document.getElementById('email').value = "";
+    }
 
-        function submitForm(event) {
-            event.preventDefault(); // Prevent default form submission
+    function submitForm(event) {
+      event.preventDefault();
 
-            let fname = document.getElementById('fname').value.trim();
-            let lname = document.getElementById('lname').value.trim();
-            let email = document.getElementById('email').value.trim();
-            let dealership = "60 Days Free Promo";
+      let fname = document.getElementById('fname').value.trim();
+      let lname = document.getElementById('lname').value.trim();
+      let email = document.getElementById('email').value.trim();
+      let dealership = "60 days free promotion";
 
-            if (!fname || !lname || !email) {
-                alert("All fields are required.");
-                return;
-            }
+      if (!fname || !lname || !email) {
+        alert("All fields are required.");
+        return;
+      }
 
-            let formData = { fname, lname, email, dealership };
+      let formData = { fname, lname, email, dealership };
 
-            fetch('https://script.google.com/macros/s/AKfycbxB8gsbZb7466WYQtwyE4CVO_9LQDnjzXZfC8t-Q2QPxwFO9LeAb3PBZPzHPillw84L/exec', {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
-            }).then(() => {
-                sessionStorage.clear(); // Clear stored input before redirecting
-                window.location.href = '../../success.html'; // Redirect to success page
-            }).catch(error => console.error('Error:', error));
-        }
+      fetch('https://script.google.com/macros/s/AKfycbxB8gsbZb7466WYQtwyE4CVO_9LQDnjzXZfC8t-Q2QPxwFO9LeAb3PBZPzHPillw84L/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      }).then(() => {
+        sessionStorage.clear();
+        window.location.href = './success.html';
+      }).catch(error => console.error('Error:', error));
+    }
 
-        window.onload = function () {
-            clearInputs(); // Ensure fields are cleared when returning to this page
-        };
-    </script>
+    window.onload = function () {
+      clearInputs();
+    };
+  </script>
 </head>
 
 <body>
-    <div class="form-container">
-        <img src="../../images/Client Logos/QQlogo.png">
+  <div class="page">
+    <main class="card-wrapper">
+      <div class="form-container">
+        <!-- First logo (keep current feel / size) -->
+        <img src="./images/Client Logos/QQlogo.png" alt="Quick Quack Logo" class="brand-logo" />
 
-        <p>Your Dealership has provided a special wash benefit for your new car. Enter your information below for
-            promotion details</p>
+        <p class="intro-text">
+          Your Dealership has provided a special wash benefit for your new car.
+          Enter your information below for promotion details.
+        </p>
+
         <form onsubmit="submitForm(event)">
-            <label for="fname">First Name:</label>
-            <input type="text" id="fname" class="input-field" required><br><br>
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" class="input-field" required />
 
-            <label for="lname">Last Name:</label>
-            <input type="text" id="lname" class="input-field" required><br><br>
+          <label for="lname">Last Name</label>
+          <input type="text" id="lname" class="input-field" required />
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" class="input-field" required><br><br>
+          <label for="email">Email</label>
+          <input type="email" id="email" class="input-field" required />
 
-            <button type="submit" class="submit-button">Submit</button>
+          <button type="submit" class="submit-button">Submit</button>
         </form>
-    </div>
+      </div>
+    </main>
 
-    <p class="footer">This site is powered by CoDev Marketing and is authorized by S&D Wash Management LLC</p>
+    <p class="footer">
+      This site is powered by CODEV Marketing and is authorized by S&amp;D Wash Management LLC
+    </p>
+  </div>
 </body>
 
 </html>
