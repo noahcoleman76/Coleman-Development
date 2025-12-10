@@ -6,12 +6,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dealership Promotion</title>
   <link rel="stylesheet" href="./promoStyles.css" />
+
+  <!-- ✅ Load Dealership Names -->
+  <script src="./dealershipNames.js"></script>
+
   <script>
     function clearInputs() {
       sessionStorage.clear();
       document.getElementById('fname').value = "";
       document.getElementById('lname').value = "";
       document.getElementById('email').value = "";
+      document.getElementById('dealership').value = "";
+    }
+
+    function populateDealerships() {
+      const select = document.getElementById("dealership");
+
+      if (!window.DEALERSHIPS || !Array.isArray(window.DEALERSHIPS)) {
+        console.error("Dealership list not found.");
+        return;
+      }
+
+      // ✅ Remove "Template" and separate "other"
+      let cleaned = window.DEALERSHIPS
+        .filter(name => name.toLowerCase() !== "template")
+        .filter(name => name.toLowerCase() !== "other");
+
+      // ✅ Alphabetical sort
+      cleaned.sort((a, b) => a.localeCompare(b));
+
+      // ✅ Add sorted dealerships
+      cleaned.forEach(name => {
+        const option = document.createElement("option");
+        option.value = name;
+        option.textContent = name.replace(/-/g, " ");
+        select.appendChild(option);
+      });
+
+      // ✅ Add "Other" as the LAST option
+      const otherOption = document.createElement("option");
+      otherOption.value = "other";
+      otherOption.textContent = "Other";
+      select.appendChild(otherOption);
     }
 
     function submitForm(event) {
@@ -20,28 +56,32 @@
       let fname = document.getElementById('fname').value.trim();
       let lname = document.getElementById('lname').value.trim();
       let email = document.getElementById('email').value.trim();
-      let dealership = "60 days free promotion";
+      let dealership = document.getElementById('dealership').value;
+      let promo = 60;
 
-      if (!fname || !lname || !email) {
+      if (!fname || !lname || !email || !dealership) {
         alert("All fields are required.");
         return;
       }
 
-      let formData = { fname, lname, email, dealership };
+      let formData = { fname, lname, email, dealership, promo };
 
       fetch('https://script.google.com/macros/s/AKfycbxB8gsbZb7466WYQtwyE4CVO_9LQDnjzXZfC8t-Q2QPxwFO9LeAb3PBZPzHPillw84L/exec', {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
-      }).then(() => {
-        sessionStorage.clear();
-        window.location.href = './success.html';
-      }).catch(error => console.error('Error:', error));
+      })
+        .then(() => {
+          sessionStorage.clear();
+          window.location.href = './success.html';
+        })
+        .catch(error => console.error('Error:', error));
     }
 
     window.onload = function () {
       clearInputs();
+      populateDealerships(); // ✅ Load dropdown values
     };
   </script>
 </head>
@@ -50,7 +90,6 @@
   <div class="page">
     <main class="card-wrapper">
       <div class="form-container">
-        <!-- First logo (keep current feel / size) -->
         <img src="./images/Client Logos/QQlogo.png" alt="Quick Quack Logo" class="brand-logo" />
 
         <p class="intro-text">
@@ -67,6 +106,12 @@
 
           <label for="email">Email</label>
           <input type="email" id="email" class="input-field" required />
+
+          <!-- ✅ NEW DROPDOWN -->
+          <label for="dealership">Dealership</label>
+          <select id="dealership" class="input-field" required>
+            <option value="">Select Your Dealership</option>
+          </select>
 
           <button type="submit" class="submit-button">Submit</button>
         </form>

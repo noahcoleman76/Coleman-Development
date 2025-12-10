@@ -21,13 +21,14 @@
       let lname = document.getElementById('lname').value.trim();
       let email = document.getElementById('email').value.trim();
       let dealership = "Jerry Seiner GMC South Jordan";
+      let promo = "30";
 
       if (!fname || !lname || !email) {
         alert("All fields are required.");
         return;
       }
 
-      let formData = { fname, lname, email, dealership };
+      let formData = { fname, lname, email, dealership, promo };
 
       fetch('https://script.google.com/macros/s/AKfycbxB8gsbZb7466WYQtwyE4CVO_9LQDnjzXZfC8t-Q2QPxwFO9LeAb3PBZPzHPillw84L/exec', {
         method: 'POST',
