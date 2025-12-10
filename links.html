@@ -75,7 +75,6 @@
                 box-shadow 0.18s ease-out,
                 border-color 0.18s ease-out,
                 background 0.18s ease-out;
-            /* Fixed overall card height so top "half" is consistent */
             height: 260px;
         }
 
@@ -89,18 +88,14 @@
             cursor: pointer;
         }
 
-        /* Logo: same box size for all */
         .card-logo {
             width: 100%;
             height: 130px;
-            /* same height for every logo */
             object-fit: contain;
-            /* keep aspect ratio, no cropping */
             background: rgba(187, 188, 191, 0.85);
             padding: 12px 16px;
             display: block;
         }
-
 
         .card-body {
             flex: 1;
@@ -150,88 +145,63 @@
         <section id="dealership-grid" class="grid"></section>
 
         <p id="empty-state" class="empty" style="display: none;">
-            No dealerships defined yet. Add folder names to the <code>dealerships</code> array in the script.
+            No dealerships defined yet. Make sure <code>dealershipNames.csv</code> exists and has dealership names.
         </p>
     </main>
+    <script src="dealershipNames.js"></script>
 
     <script>
-        // 🔧 Edit this array with your dealership folder names.
-        const dealerships = [
-            "Alpine-Overland",
-            "Asbury",
-            "Fast-Start-Auto",
-            "Fiuza-Motors",
-            "Generous-Auto",
-            "Jerry-Seiner-GMC-South-Jordan",
-            "Jerry-Seiner-Kia-South-Jordan",
-            "Low-Book-Sales",
-            "Mark-Miller-Subaru-Southtowne",
-            "National-Auto-Plaza",
-            "Peterson-Auto-Sales",
-            "Prestman-Auto",
-            "Riverton-Chevrolet",
-            "Southtowne-Mitsubishi",
-            "Stockton-12-Honda",
-            "Template",
-            "Tim-Dahle-Mazda-Southtowne",
-            "Tim-Dahle-Nissan-Southtowne",
-            "Volkswagen-Southtowne",
-            "axio"
-        ];
+    const grid = document.getElementById("dealership-grid");
+    const emptyState = document.getElementById("empty-state");
 
-        const grid = document.getElementById("dealership-grid");
-        const emptyState = document.getElementById("empty-state");
+    function folderToDisplayName(folder) {
+        return folder.replace(/-/g, " ");
+    }
 
-        // Convert "Prestman-Auto" -> "Prestman Auto"
-        function folderToDisplayName(folder) {
-            return folder.replace(/-/g, " ");
+    function renderDealerships(dealerships) {
+        if (!dealerships || !dealerships.length) {
+            emptyState.style.display = "block";
+            return;
         }
 
-        function renderDealerships() {
-            if (!dealerships.length) {
-                emptyState.style.display = "block";
-                return;
-            }
+        dealerships.forEach((folder) => {
+            const name = folderToDisplayName(folder);
 
-            dealerships.forEach((folder) => {
-                const name = folderToDisplayName(folder);
+            const href = `https://ColemanDev.com/Dealerships/${folder}/`;
+            const logoSrc = `Dealerships/${folder}/logo.png`;
 
-                const href = `https://ColemanDev.com/Dealerships/${folder}/`;
-                const logoSrc = `Dealerships/${folder}/logo.png`;
+            const link = document.createElement("a");
+            link.href = href;
+            link.className = "card-link";
 
-                const link = document.createElement("a");
-                link.href = href;
-                link.className = "card-link";
+            const card = document.createElement("div");
+            card.className = "card";
 
-                const card = document.createElement("div");
-                card.className = "card";
+            const img = document.createElement("img");
+            img.src = logoSrc;
+            img.alt = `${name} logo`;
+            img.className = "card-logo";
 
-                const img = document.createElement("img");
-                img.src = logoSrc;
-                img.alt = `${name} logo`;
-                img.className = "card-logo";
+            const body = document.createElement("div");
+            body.className = "card-body";
 
-                const body = document.createElement("div");
-                body.className = "card-body";
+            const nameEl = document.createElement("div");
+            nameEl.className = "card-name";
+            nameEl.textContent = name;
 
-                const nameEl = document.createElement("div");
-                nameEl.className = "card-name";
-                nameEl.textContent = name;
+            body.appendChild(nameEl);
 
-                const urlEl = document.createElement("div");
-                urlEl.className = "card-url";
+            card.appendChild(img);
+            card.appendChild(body);
+            link.appendChild(card);
+            grid.appendChild(link);
+        });
+    }
 
-                body.appendChild(nameEl);
+    // window.DEALERSHIPS comes from dealershipNames.js
+    renderDealerships(window.DEALERSHIPS || []);
+</script>
 
-                card.appendChild(img);
-                card.appendChild(body);
-                link.appendChild(card);
-                grid.appendChild(link);
-            });
-        }
-
-        renderDealerships();
-    </script>
 </body>
 
 </html>
