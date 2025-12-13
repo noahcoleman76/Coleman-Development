@@ -183,3 +183,29 @@ a {
   margin-right: auto;
   margin-left: auto;
 }
+
+/* Success delivery callout (makes the 24-business-hours message obvious) */
+.delivery-box {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.14);
+  border: 2px solid rgba(255, 255, 255, 0.28);
+  border-radius: 12px;
+  padding: 14px 14px 12px;
+  margin: 0 0 18px;
+  text-align: center;
+}
+
+.delivery-title {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.delivery-text {
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.delivery-text strong {
+  text-decoration: underline;
+}
