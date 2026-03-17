@@ -80,13 +80,13 @@ document.addEventListener("DOMContentLoaded", () => {
       modal.classList.add("show");
       document.body.classList.add("modal-open");
       modalHidden = false;
-      logoImage.src = "./images/Coleman Development-logos/codev logo white.png"; // Reset logo
+      logoImage.src = "./assets/images/Coleman Development-logos/codev logo white.png"; // Reset logo
     } else {
       // Hide the modal when scrolling down
       modal.classList.remove("show");
       document.body.classList.remove("modal-open");
       modalHidden = true;
-      logoImage.src = "./images/Coleman Development-logos/codev logo.png"; // Change logo
+      logoImage.src = "./assets/images/Coleman Development-logos/codev logo.png"; // Change logo
     }
   });
 });

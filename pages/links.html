@@ -145,10 +145,10 @@
         <section id="dealership-grid" class="grid"></section>
 
         <p id="empty-state" class="empty" style="display: none;">
-            No dealerships defined yet. Make sure <code>dealershipNames.csv</code> exists and has dealership names.
+            No dealerships defined yet. Make sure the <code>projects/dealerships/</code> folders are present, then regenerate <code>assets/js/dealershipNames.js</code>.
         </p>
     </main>
-    <script src="dealershipNames.js"></script>
+    <script src="../assets/js/dealershipNames.js"></script>
 
     <script>
     const grid = document.getElementById("dealership-grid");
@@ -167,8 +167,8 @@
         dealerships.forEach((folder) => {
             const name = folderToDisplayName(folder);
 
-            const href = `https://ColemanDev.com/Dealerships/${folder}/`;
-            const logoSrc = `Dealerships/${folder}/logo.png`;
+            const href = `../projects/dealerships/${folder}/`;
+            const logoSrc = `../projects/dealerships/${folder}/logo.png`;
 
             const link = document.createElement("a");
             link.href = href;

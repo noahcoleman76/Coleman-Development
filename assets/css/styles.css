@@ -189,7 +189,7 @@ body.modal-open header {
     /* Centers content vertically */
     height: 200px;
     /* Adjust as needed for your design */
-    background-image: url("./images/pankaj-patel-_SgRNwAVNKw-unsplash.jpg");
+    background-image: url("../images/pankaj-patel-_SgRNwAVNKw-unsplash.jpg");
     /* Your background */
     background-attachment: fixed;
     background-size: cover;
@@ -482,7 +482,7 @@ body.modal-open header {
 
 .section-delivering{
     width: 100vw;
-    background-image: url("./images/blue-gradient-with-pattern.jpg");
+    background-image: url("../images/blue-gradient-with-pattern.jpg");
     background-attachment: fixed;
     background-size: cover;
 }
@@ -608,13 +608,17 @@ p {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
-.portfolio-item img {
+.portfolio-item img,
+.portfolio-item iframe {
     transition: transform 0.3s ease-in-out;
     width: 100%;
+    height: 100%;
+    display: block;
     object-fit: contain;
 }
 
-.portfolio-item:hover img {
+.portfolio-item:hover img,
+.portfolio-item:hover iframe {
     transform: scale(1.1)
 }
 
