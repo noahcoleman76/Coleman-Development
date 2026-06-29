@@ -7,8 +7,17 @@
     <title>Knockout Promos</title>
     <link rel="stylesheet" type="text/css" href="../assets/css/styles.css" />
     <link rel="icon" type="image/x-icon" href="../assets/images/Coleman Development-logos/favicon.png">
-    <script src="/scripts/redirect-colemandev.js"></script>
-</head>
+    <script>
+        (function () {
+            var host = window.location.hostname.toLowerCase();
+            var isColemanDev = host === "colemandev.com" || host.endsWith(".colemandev.com");
+            var isPriority1 = host === "priority1.colemandev.com";
+
+            if (isColemanDev && !isPriority1) {
+                window.location.replace("https://knockoutpromos.com/");
+            }
+        })();
+    </script></head>
 
 <body>
     <div class="container">
